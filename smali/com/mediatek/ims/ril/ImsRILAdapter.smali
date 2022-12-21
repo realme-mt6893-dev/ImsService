@@ -13121,7 +13121,8 @@
     .line 4151
     move/from16 v17, v9
 
-    invoke-virtual/range {v15 .. v21}, Lcom/android/internal/telephony/metrics/TelephonyMetrics;->writeRilSendSms(IIIIJ)V
+    move-object/from16 v1, p0
+    invoke-direct {v1, v14, v15, v10, v11}, Lcom/mediatek/ims/ril/ImsRILAdapter;->writeRilSendSms(IIII)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
@@ -13183,6 +13184,24 @@
 
     .line 4160
     :goto_3
+    return-void
+.end method
+
+.method private writeRilSendSms(IIII)V
+	.locals 9
+	.param p1, "i1"
+	.param p2, "i2"
+	.param p3, "i3"
+	.param p4, "i4"
+
+    move-object/from16 v1, p0
+    iget-object v3, v1, Lcom/mediatek/ims/ril/ImsRILAdapter;->mMetrics:Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+    move/from16 v4, p1
+    move/from16 v5, p2
+    move/from16 v6, p3
+    move/from16 v7, p4
+    const-wide/16 v8, 0
+    invoke-virtual/range {v3 .. v9}, Lcom/android/internal/telephony/metrics/TelephonyMetrics;->writeRilSendSms(IIIIJ)V
     return-void
 .end method
 
